@@ -1,0 +1,594 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button {
+    color: #ffffff;
+    background-color: #c51111;
+    border-radius: 3px;
+    border: none;
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+button:hover {
+    color: black;
+    transition: 0.7s ease-in-out;
+}
+
+body {
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.caixa-mae {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 100px;
+    height: 100vh;
+}
+
+.caixa-principal {
+    width: 40%;
+}
+
+.caixa-video {
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+}
+
+video {
+    min-height: 100%;
+    min-width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.mascara {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(109deg, rgba(10, 12, 16, 0.99) 15%, rgba(10, 12, 16, 0.7) 50%, rgba(10, 12, 16, 0.99) 85%);
+    position: fixed;
+    top: 0;
+}
+
+p {
+    color: white;
+    font-size: 20px;
+}
+
+.link-whatsapp img {
+    height: 60px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin: 30px;
+}
+
+.header a {
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.header a:hover {
+    color: #c51111;
+    font-size: 25px;
+    transition: 0.5s ease-in-out;
+}
+
+.formulario-fale-conosco {
+    background-color: white;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    position: fixed;
+    top: 30%;
+    left: -300px;
+    padding: 20px;
+    border-radius: 5px;
+    transition: left 1.5s ease-in-out;
+    width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-size: 14px;
+}
+
+.mascara-formulario {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.form-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #999;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.close-btn:hover {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+.form-control::placeholder {
+    color: #aaa;
+}
+
+select.form-control {
+    background-color: white;
+    cursor: pointer;
+}
+
+.waste-slider {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #ddd;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.waste-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #4a90e2;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.waste-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #4a90e2;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.waste-value {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.calculate-btn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.calculate-btn:hover {
+    background-color: #3a7bc8;
+    transform: translateY(-1px);
+}
+
+.results-container {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 10px;
+    border: 1px solid #eee;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.results-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #4a90e2;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.back-btn:hover {
+    background-color: #e3f2fd;
+}
+
+.results-item {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.results-item:last-child {
+    border-bottom: none;
+}
+
+.results-value {
+    font-weight: 600;
+    color: #333;
+}
+
+.summary {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid #eee;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.price-highlight {
+    color: #28a745;
+    font-size: 18px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .caixa-mae {
+        flex-direction: column;
+        padding: 50px 20px;
+        height: auto;
+        min-height: 100vh;
+        gap: 40px;
+    }
+
+    .formulario-fale-conosco {
+        width: 90%;
+        max-width: 400px;
+        top: 20px;
+        left: -100%;
+        padding: 15px;
+        font-size: 13px;
+    }
+
+    .formulario-fale-conosco.open {
+        left: 5%;
+    }
+
+    .form-header {
+        margin-bottom: 10px;
+    }
+
+    .form-title {
+        font-size: 16px;
+    }
+
+    .close-btn {
+        font-size: 18px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .grid-2 {
+        gap: 8px;
+    }
+
+    .form-group label {
+        font-size: 13px;
+    }
+
+    .form-control {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    .calculate-btn {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+
+    .results-title {
+        font-size: 15px;
+    }
+
+    .results-item {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    .summary-item {
+        font-size: 15px;
+    }
+
+    .price-highlight {
+        font-size: 16px;
+    }
+
+    .header {
+        margin: 20px;
+        gap: 15px;
+    }
+
+    .header a {
+        font-size: 20px;
+    }
+
+    button {
+        width: 180px;
+        height: 45px;
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .link-whatsapp img {
+        height: 50px;
+        right: 15px;
+        bottom: 15px;
+    }
+    
+    /* Posicionar o botão fixo na parte inferior da tela em dispositivos móveis */
+    .caixa-mae > div:first-child button {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        margin: 0;
+        width: 200px;
+        height: 50px;
+    }
+    
+    /* Ajustar o padding do container principal para não ficar por baixo do botão fixo */
+    .caixa-mae {
+        padding-bottom: 90px; /* Espaço para o botão fixo + margem */
+    }
+    
+    /* Ajustar a posição do formulário para não sobrepor o botão */
+    .formulario-fale-conosco {
+        top: 15%;
+        max-height: 70vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .formulario-fale-conosco {
+        width: 95%;
+        left: -100%;
+        top: 15%;
+        padding: 12px;
+        font-size: 12px;
+    }
+
+    .formulario-fale-conosco.open {
+        left: 2.5%;
+    }
+
+    .form-title {
+        font-size: 15px;
+    }
+
+    .close-btn {
+        font-size: 16px;
+        width: 18px;
+        height: 18px;
+    }
+
+    .grid-2 {
+        gap: 6px;
+    }
+
+    .form-group label {
+        font-size: 12px;
+    }
+
+    .form-control {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+
+    .waste-slider {
+        height: 5px;
+    }
+
+    .calculate-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .results-title {
+        font-size: 14px;
+    }
+
+    .results-item {
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+    .summary-item {
+        font-size: 14px;
+    }
+
+    .price-highlight {
+        font-size: 14px;
+    }
+
+    .header {
+        gap: 10px;
+        margin: 15px;
+    }
+
+    .header a {
+        font-size: 18px;
+    }
+
+    button {
+        width: 150px;
+        height: 40px;
+        font-size: 13px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .link-whatsapp img {
+        height: 40px;
+    }
+    
+    /* Ajustes para telas móveis menores */
+    .caixa-mae > div:first-child button {
+        width: 160px;
+        height: 45px;
+        bottom: 15px;
+    }
+    
+    .caixa-mae {
+        padding-bottom: 80px;
+    }
+    
+    .formulario-fale-conosco {
+        top: 10%;
+    }
+}
+
+/* Para telas muito pequenas (celulares antigos) */
+@media (max-height: 600px) {
+    .formulario-fale-conosco {
+        top: 10px;
+        max-height: 70vh;
+    }
+    
+    .caixa-mae > div:first-child button {
+        bottom: 10px;
+        width: 180px;
+        height: 45px;
+    }
+    
+    .caixa-mae {
+        padding-bottom: 70px;
+    }
+}
+
+/* Ajustes para orientação paisagem em dispositivos móveis */
+@media (max-width: 768px) and (orientation: landscape) {
+    .formulario-fale-conosco {
+        width: 70%;
+        max-width: 500px;
+    }
+    
+    .caixa-mae {
+        padding: 30px 20px 80px 20px;
+    }
+    
+    .caixa-mae > div:first-child button {
+        bottom: 15px;
+        width: 180px;
+        height: 45px;
+    }
+}

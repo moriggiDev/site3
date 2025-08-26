@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Play Obras</title>
+</head>
+
+<body>
+    <div class="header">
+        <img src="" alt="logo">
+        <a>Home</a>
+        <a>teste</a>
+        <a>Sobre Nós</a>
+    </div>
+
+    <div class="caixa-mae">
+        <div>
+            <img src="" alt="">
+            <p>Prestamos serviços de azulejista, gesseiro, telhadista, pedreiro, carpinteiro, armador e marçeneiro</p>
+            <button onclick="mostrarForm()">Calculadora</button>
+        </div>
+
+        <div>
+            <img src="" alt="">
+        </div>
+
+        <div class="dialogo">
+            <iframe src="https://www.shoppingparqueoeste.com.br/"></iframe>
+        </div>
+    </div>
+
+    <div class="caixa-video">
+        <video src="./img/background_video.mp4" autoplay muted loop></video>
+    </div>
+
+    <a href="" class="link-whatsapp">
+        <img src="./img/whatsapp.png" alt="">
+    </a>
+
+    <form class="formulario-fale-conosco">
+        <div class="form-header">
+            <div class="form-title">Materiais de Construção</div>
+            <button type="button" class="close-btn" onclick="esconderForm()">×</button>
+        </div>
+
+        <div id="inputSection">
+            <div class="form-group">
+                <label for="materialType">Tipo de Material</label>
+                <select id="materialType" class="form-control">
+                    <option value="ceramica">Cerâmica</option>
+                    <option value="azulejo">Azulejo</option>
+                    <option value="blocos">Blocos</option>
+                    <option value="tinta">Tinta</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Dimensões (m)</label>
+                <div class="grid-2">
+                    <div>
+                        <input type="number" id="length" placeholder="Comprimento" class="form-control">
+                    </div>
+                    <div>
+                        <input type="number" id="width" placeholder="Largura" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div id="heightSection" class="form-group" style="display: none;">
+                <label for="height">Altura da Parede (m)</label>
+                <input type="number" id="height" placeholder="Ex: 2.8" step="0.1" class="form-control">
+            </div>
+
+            <div id="tileTypeSection" class="form-group" style="display: none;">
+                <label for="tileType">Tipo de Peça</label>
+                <select id="tileType" class="form-control">
+                    <option value="45x45">45x45 cm</option>
+                    <option value="30x30">30x30 cm</option>
+                    <option value="20x20">20x20 cm</option>
+                    <option value="15x15">15x15 cm</option>
+                    <option value="personalizado">Personalizado</option>
+                </select>
+            </div>
+
+            <div id="customDimensions" class="form-group" style="display: none;">
+                <label>Dimensões Personalizadas (cm)</label>
+                <div class="grid-2">
+                    <div>
+                        <input type="number" id="customWidth" placeholder="Largura" class="form-control">
+                    </div>
+                    <div>
+                        <input type="number" id="customHeight" placeholder="Altura" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div id="blockTypeSection" class="form-group" style="display: none;">
+                <label for="blockType">Tipo de Bloco</label>
+                <select id="blockType" class="form-control">
+                    <option value="9x19x39">9x19x39 cm</option>
+                    <option value="14x19x39">14x19x39 cm</option>
+                    <option value="19x19x39">19x19x39 cm</option>
+                    <option value="personalizado">Personalizado</option>
+                </select>
+            </div>
+
+            <div id="customBlockDimensions" class="form-group" style="display: none;">
+                <label>Dimensões Personalizadas (cm)</label>
+                <div class="grid-2">
+                    <div>
+                        <input type="number" id="blockWidth" placeholder="Largura" class="form-control">
+                    </div>
+                    <div>
+                        <input type="number" id="blockHeight" placeholder="Altura" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div id="paintTypeSection" class="form-group" style="display: none;">
+                <label for="paintType">Tipo de Tinta</label>
+                <select id="paintType" class="form-control">
+                    <option value="lata18">Lata de 18L</option>
+                    <option value="lata36">Lata de 3,6L</option>
+                    <option value="galao36">Galão de 3,6L</option>
+                    <option value="balde18">Balde de 18L</option>
+                </select>
+            </div>
+
+            <div id="coatsSection" class="form-group" style="display: none;">
+                <label for="coats">Número de Demãos</label>
+                <select id="coats" class="form-control">
+                    <option value="1">1 demão</option>
+                    <option value="2" selected>2 demãos</option>
+                    <option value="3">3 demãos</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Fator de Perda (%)</label>
+                <input type="range" id="wasteFactor" min="0" max="20" value="10" class="waste-slider">
+                <div class="waste-value" id="wasteValue">10%</div>
+            </div>
+
+            <button type="button" id="calculateBtn" class="calculate-btn">Calcular Materiais</button>
+        </div>
+
+        <div id="results" class="results-container" style="display: none;">
+            <div class="results-header">
+                <h3 class="results-title">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Resultados do Cálculo
+                </h3>
+                <button type="button" id="backBtn" class="back-btn">← Voltar</button>
+            </div>
+            <div id="resultsContent"></div>
+            
+            <div class="summary">
+                <div class="results-item summary-item">
+                    <span>Total Estimado:</span>
+                    <span id="totalCost" class="price-highlight">R$ 0,00</span>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="mascara-formulario" onclick="esconderForm()" style="display: none;"></div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
