@@ -653,3 +653,90 @@ select.form-control {
     transition: 0.7s ease-in-out;
 
 }
+
+body { 
+       font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.caixa-conv {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.caixa-conv h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+/* Seção de Convênios */
+#convenios {
+    text-align: center;
+    padding: 20px;
+    background-color: #e3f2fd;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border-left: 5px solid #2196f3;
+}
+
+#convenios h3 {
+    color: #1565c0;
+    font-size: 1.4em;
+}
+
+/* Seção de Colaboradores */
+#colaboradores {
+    text-align: center;
+    padding: 20px;
+    background-color: #f3e5f5;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border-left: 5px solid #9c27b0;
+}
+
+#colaboradores h3 {
+    color: #7b1fa2;
+    font-size: 1.3em;
+}
+
+/* Seção de Parcerias */
+#parcerias {
+    padding: 25px;
+    background-color: #fff8e1;
+    border-radius: 10px;
+    text-align: center;
+    border-left: 5px solid #ffc107;
+}
+
+#parcerias h2 {
+    color: #e65100;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .caixa-conv {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .caixa-conv h1 {
+        font-size: 2em;
+    }
+
+    #convenios h3,
+    #colaboradores h3,
+    #parcerias h2 {
+        font-size: 1.1em;
+    }
+}
