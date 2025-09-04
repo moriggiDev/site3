@@ -209,7 +209,7 @@ select.form-control {
     background: #4a90e2;
     cursor: pointer;
     border: 2px solid white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .waste-slider::-moz-range-thumb {
@@ -219,7 +219,7 @@ select.form-control {
     background: #4a90e2;
     cursor: pointer;
     border: 2px solid white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .waste-value {
@@ -431,9 +431,9 @@ select.form-control {
         right: 15px;
         bottom: 15px;
     }
-    
+
     /* Posicionar o botão fixo na parte inferior da tela em dispositivos móveis */
-    .caixa-mae > div:first-child button {
+    .caixa-mae>div:first-child button {
         position: fixed;
         bottom: 20px;
         left: 50%;
@@ -443,12 +443,13 @@ select.form-control {
         width: 200px;
         height: 50px;
     }
-    
+
     /* Ajustar o padding do container principal para não ficar por baixo do botão fixo */
     .caixa-mae {
-        padding-bottom: 90px; /* Espaço para o botão fixo + margem */
+        padding-bottom: 90px;
+        /* Espaço para o botão fixo + margem */
     }
-    
+
     /* Ajustar a posição do formulário para não sobrepor o botão */
     .formulario-fale-conosco {
         top: 15%;
@@ -540,18 +541,18 @@ select.form-control {
     .link-whatsapp img {
         height: 40px;
     }
-    
+
     /* Ajustes para telas móveis menores */
-    .caixa-mae > div:first-child button {
+    .caixa-mae>div:first-child button {
         width: 160px;
         height: 45px;
         bottom: 15px;
     }
-    
+
     .caixa-mae {
         padding-bottom: 80px;
     }
-    
+
     .formulario-fale-conosco {
         top: 10%;
     }
@@ -563,13 +564,13 @@ select.form-control {
         top: 10px;
         max-height: 70vh;
     }
-    
-    .caixa-mae > div:first-child button {
+
+    .caixa-mae>div:first-child button {
         bottom: 10px;
         width: 180px;
         height: 45px;
     }
-    
+
     .caixa-mae {
         padding-bottom: 70px;
     }
@@ -581,14 +582,74 @@ select.form-control {
         width: 70%;
         max-width: 500px;
     }
-    
+
     .caixa-mae {
         padding: 30px 20px 80px 20px;
     }
-    
-    .caixa-mae > div:first-child button {
+
+    .caixa-mae>div:first-child button {
         bottom: 15px;
         width: 180px;
         height: 45px;
     }
+}
+
+.caixa-um {
+    position: relative;
+    z-index: 1;
+}
+
+
+
+.sugest-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.paragr-um {
+    
+  display: flex;
+  justify-content: center; /* centraliza na horizontal */
+  align-items: center;     /* centraliza na vertical (se tiver altura definida) */
+  gap: 20px;               /* espaço entre os itens */
+  flex-wrap: wrap;         /* permite quebrar linha */
+
+    margin-top: 30px;
+  color: white;
+  font-size: clamp(16px, 2vw, 24px); /* Ajusta o tamanho entre 16px e 24px */
+  text-align: center;
+  max-width: 600px; /* Limita a largura máxima */
+  margin: 0 auto; /* Centraliza na tela */
+  padding: 0 10px; /* Evita que o texto grude nas bordas */
+}
+
+.paragr-dois {
+    
+  display: flex;
+  justify-content: center; /* centraliza na horizontal */
+  align-items: center;     /* centraliza na vertical (se tiver altura definida) */
+  gap: 20px;               /* espaço entre os itens */
+  flex-wrap: wrap;         /* permite quebrar linha */
+
+    margin-bottom: 40px;
+  color: white;
+  font-size: clamp(16px, 2vw, 24px); /* Ajusta o tamanho entre 16px e 24px */
+  text-align: center;
+  max-width: 600px; /* Limita a largura máxima */
+  margin: 0 auto; /* Centraliza na tela */
+  padding: 0 10px; /* Evita que o texto grude nas bordas */
+}
+
+h2 {
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    margin-top: 20px;
+}
+h2:hover {
+    color: #c51111;
+    transition: 0.7s ease-in-out;
+
 }
