@@ -642,13 +642,13 @@ select.form-control {
   padding: 0 10px; /* Evita que o texto grude nas bordas */
 }
 
-h2 {
+.h2 {
     color: white;
     font-size: 36px;
     text-align: center;
     margin-top: 20px;
 }
-h2:hover {
+.h2:hover {
     color: #c51111;
     transition: 0.7s ease-in-out;
 
