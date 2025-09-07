@@ -1,113 +1,222 @@
+/* ==============================
+   RESET & ESTILOS GLOBAIS
+============================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-button {
-    color: #ffffff;
-    background-color: #c51111;
-    border-radius: 3px;
-    border: none;
-    width: 200px;
-    height: 50px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-top: 40px;
-}
-
-button:hover {
-    color: black;
-    transition: 0.7s ease-in-out;
-}
-
 body {
-    height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
 }
 
-.caixa-mae {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 100px;
-    height: 100vh;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-.caixa-principal {
-    width: 40%;
+ul {
+    list-style: none;
 }
 
-.caixa-video {
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button, .btn {
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* ==============================
+   VÍDEO DE FUNDO (GLOBAL)
+============================== */
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
     position: absolute;
-    bottom: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
     z-index: -1;
 }
 
-video {
-    min-height: 100%;
-    min-width: 100%;
-    position: fixed;
-    top: 0;
+/* ==============================
+   HEADER GLOBAL
+============================== */
+
+.header, header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 10;
 }
 
-.mascara {
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(109deg, rgba(10, 12, 16, 0.99) 15%, rgba(10, 12, 16, 0.7) 50%, rgba(10, 12, 16, 0.99) 85%);
-    position: fixed;
-    top: 0;
+.header a, header nav a {
+    color: #ffffff;
+    font-size: 24px;
+    padding: 5px 10px;
+    border-radius: 4px;
 }
 
-p {
+.header a:hover, header nav a:hover {
+    color: #c51111;
+    font-size: 25px;
+    transition: 0.5s ease-in-out;
+}
+
+.header .logo {
+    height: 50px;
+}
+
+header nav ul {
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==============================
+   PÁGINA PRINCIPAL (HOMEPAGE)
+============================== */
+
+.homepage main.caixa-mae {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 100px 50px;
+    min-height: calc(100vh - 200px);
+    position: relative;
+    z-index: 10;
+    gap: 40px;
+}
+
+.homepage .content-left,
+.homepage .content-center,
+.homepage .dialogo {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    max-width: 400px;
+}
+
+.homepage .main-icon,
+.homepage .illustration {
+    height: 120px;
+    margin-bottom: 20px;
+}
+
+.homepage p {
     color: white;
     font-size: 20px;
+    margin: 20px 0;
+    line-height: 1.5;
 }
+
+/* Botão Calculadora */
+.homepage button {
+    color: #ffffff;
+    background-color: #c51111;
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.homepage button:hover {
+    background-color: #a00e0e;
+    transform: scale(1.05);
+}
+
+/* Diálogo / Iframe */
+.homepage .dialogo iframe {
+    border: none;
+    border-radius: 10px;
+    background: white;
+    min-height: 300px;
+}
+
+/* ==============================
+   BOTÃO WHATSAPP FIXO
+============================== */
 
 .link-whatsapp img {
     height: 60px;
     position: fixed;
     right: 20px;
     bottom: 20px;
+    z-index: 9999;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-.header {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    margin: 30px;
-}
-
-.header a {
-    color: #ffffff;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.header a:hover {
-    color: #c51111;
-    font-size: 25px;
-    transition: 0.5s ease-in-out;
-}
+/* ==============================
+   FORMULÁRIO FLUTUANTE (CÁLCULO)
+============================== */
 
 .formulario-fale-conosco {
     background-color: white;
     display: flex;
-    gap: 20px;
     flex-direction: column;
+    gap: 20px;
     position: fixed;
-    top: 30%;
+    top: 50%;
     left: -300px;
-    padding: 20px;
-    border-radius: 5px;
-    transition: left 1.5s ease-in-out;
-    width: 400px;
+    transform: translateY(-50%);
+    padding: 25px;
+    border-radius: 10px;
+    transition: left 0.5s ease-in-out, transform 0.5s ease-in-out;
+    width: 420px;
     max-height: 80vh;
     overflow-y: auto;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
     font-size: 14px;
+    border: none;
+    outline: none;
+}
+
+.formulario-fale-conosco.open {
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .mascara-formulario {
@@ -116,8 +225,8 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
     display: none;
 }
 
@@ -125,25 +234,25 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #eee;
+    border-bottom: 2px solid #eee;
     padding-bottom: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    color: #333;
+    color: #2c3e50;
 }
 
 .close-btn {
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
     color: #999;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -165,21 +274,22 @@ p {
     font-size: 14px;
     font-weight: 600;
     color: #555;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .form-control {
     width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 10px 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
     font-size: 14px;
     box-sizing: border-box;
 }
 
 .form-control:focus {
     outline: none;
-    border-color: #4a90e2;
+    border-color: #e67e22;
+    background-color: #fff9f0;
 }
 
 .form-control::placeholder {
@@ -189,567 +299,180 @@ p {
 select.form-control {
     background-color: white;
     cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
 }
 
 .waste-slider {
     width: 100%;
-    height: 6px;
-    border-radius: 3px;
-    background: #ddd;
+    height: 8px;
+    border-radius: 4px;
+    background: #e0e0e0;
     outline: none;
     -webkit-appearance: none;
+    margin: 10px 0;
 }
 
 .waste-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background: #4a90e2;
+    background: #e67e22;
     cursor: pointer;
-    border: 2px solid white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 3px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .waste-slider::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background: #4a90e2;
+    background: #e67e22;
     cursor: pointer;
-    border: 2px solid white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 3px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .waste-value {
     text-align: center;
-    font-size: 12px;
-    color: #666;
+    font-size: 14px;
+    color: #e67e22;
+    font-weight: bold;
     margin-top: 5px;
 }
 
 .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 12px;
 }
 
 .calculate-btn {
-    background-color: #4a90e2;
+    background-color: #e67e22;
     color: white;
-    border: none;
-    padding: 12px 15px;
-    border-radius: 4px;
-    font-size: 14px;
+    padding: 14px 20px;
+    border-radius: 6px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     width: 100%;
-    transition: all 0.3s;
-    margin-top: 10px;
+    margin-top: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .calculate-btn:hover {
-    background-color: #3a7bc8;
-    transform: translateY(-1px);
+    background-color: #d35400;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
+/* Resultados */
 .results-container {
     background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 4px;
-    margin-top: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
     border: 1px solid #eee;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .results-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eee;
 }
 
 .results-title {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
-    color: #333;
+    color: #2c3e50;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .back-btn {
     background: none;
-    border: none;
-    font-size: 14px;
-    color: #4a90e2;
-    cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 4px;
+    border: 1px solid #e67e22;
+    color: #e67e22;
+    padding: 8px 16px;
+    border-radius: 6px;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .back-btn:hover {
-    background-color: #e3f2fd;
+    background-color: #e67e22;
+    color: white;
 }
 
 .results-item {
-    font-size: 14px;
+    font-size: 15px;
     color: #555;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     display: flex;
     justify-content: space-between;
-    padding: 5px 0;
-    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
 }
 
 .results-item:last-child {
     border-bottom: none;
+    margin-bottom: 0;
 }
 
 .results-value {
     font-weight: 600;
-    color: #333;
+    color: #2c3e50;
 }
 
 .summary {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 2px solid #eee;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 3px solid #e67e22;
 }
 
 .summary-item {
     display: flex;
     justify-content: space-between;
-    font-weight: 600;
-    color: #333;
-    font-size: 16px;
-    margin-bottom: 5px;
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 .price-highlight {
-    color: #28a745;
-    font-size: 18px;
+    color: #27ae60;
+    font-size: 22px;
+    font-weight: 700;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .caixa-mae {
-        flex-direction: column;
-        padding: 50px 20px;
-        height: auto;
-        min-height: 100vh;
-        gap: 40px;
-    }
-
-    .formulario-fale-conosco {
-        width: 90%;
-        max-width: 400px;
-        top: 20px;
-        left: -100%;
-        padding: 15px;
-        font-size: 13px;
-    }
-
-    .formulario-fale-conosco.open {
-        left: 5%;
-    }
-
-    .form-header {
-        margin-bottom: 10px;
-    }
-
-    .form-title {
-        font-size: 16px;
-    }
-
-    .close-btn {
-        font-size: 18px;
-        width: 20px;
-        height: 20px;
-    }
-
-    .grid-2 {
-        gap: 8px;
-    }
-
-    .form-group label {
-        font-size: 13px;
-    }
-
-    .form-control {
-        padding: 6px 10px;
-        font-size: 13px;
-    }
-
-    .calculate-btn {
-        padding: 10px 15px;
-        font-size: 13px;
-    }
-
-    .results-title {
-        font-size: 15px;
-    }
-
-    .results-item {
-        font-size: 13px;
-        margin-bottom: 6px;
-    }
-
-    .summary-item {
-        font-size: 15px;
-    }
-
-    .price-highlight {
-        font-size: 16px;
-    }
-
-    .header {
-        margin: 20px;
-        gap: 15px;
-    }
-
-    .header a {
-        font-size: 20px;
-    }
-
-    button {
-        width: 180px;
-        height: 45px;
-        font-size: 14px;
-    }
-
-    p {
-        font-size: 18px;
-        text-align: center;
-    }
-
-    .link-whatsapp img {
-        height: 50px;
-        right: 15px;
-        bottom: 15px;
-    }
-
-    /* Posicionar o botão fixo na parte inferior da tela em dispositivos móveis */
-    .caixa-mae>div:first-child button {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1000;
-        margin: 0;
-        width: 200px;
-        height: 50px;
-    }
-
-    /* Ajustar o padding do container principal para não ficar por baixo do botão fixo */
-    .caixa-mae {
-        padding-bottom: 90px;
-        /* Espaço para o botão fixo + margem */
-    }
-
-    /* Ajustar a posição do formulário para não sobrepor o botão */
-    .formulario-fale-conosco {
-        top: 15%;
-        max-height: 70vh;
-    }
-}
-
-@media (max-width: 480px) {
-    .formulario-fale-conosco {
-        width: 95%;
-        left: -100%;
-        top: 15%;
-        padding: 12px;
-        font-size: 12px;
-    }
-
-    .formulario-fale-conosco.open {
-        left: 2.5%;
-    }
-
-    .form-title {
-        font-size: 15px;
-    }
-
-    .close-btn {
-        font-size: 16px;
-        width: 18px;
-        height: 18px;
-    }
-
-    .grid-2 {
-        gap: 6px;
-    }
-
-    .form-group label {
-        font-size: 12px;
-    }
-
-    .form-control {
-        padding: 5px 8px;
-        font-size: 12px;
-    }
-
-    .waste-slider {
-        height: 5px;
-    }
-
-    .calculate-btn {
-        padding: 8px 12px;
-        font-size: 12px;
-    }
-
-    .results-title {
-        font-size: 14px;
-    }
-
-    .results-item {
-        font-size: 12px;
-        margin-bottom: 5px;
-    }
-
-    .summary-item {
-        font-size: 14px;
-    }
-
-    .price-highlight {
-        font-size: 14px;
-    }
-
-    .header {
-        gap: 10px;
-        margin: 15px;
-    }
-
-    .header a {
-        font-size: 18px;
-    }
-
-    button {
-        width: 150px;
-        height: 40px;
-        font-size: 13px;
-    }
-
-    p {
-        font-size: 16px;
-    }
-
-    .link-whatsapp img {
-        height: 40px;
-    }
-
-    /* Ajustes para telas móveis menores */
-    .caixa-mae>div:first-child button {
-        width: 160px;
-        height: 45px;
-        bottom: 15px;
-    }
-
-    .caixa-mae {
-        padding-bottom: 80px;
-    }
-
-    .formulario-fale-conosco {
-        top: 10%;
-    }
-}
-
-/* Para telas muito pequenas (celulares antigos) */
-@media (max-height: 600px) {
-    .formulario-fale-conosco {
-        top: 10px;
-        max-height: 70vh;
-    }
-
-    .caixa-mae>div:first-child button {
-        bottom: 10px;
-        width: 180px;
-        height: 45px;
-    }
-
-    .caixa-mae {
-        padding-bottom: 70px;
-    }
-}
-
-/* Ajustes para orientação paisagem em dispositivos móveis */
-@media (max-width: 768px) and (orientation: landscape) {
-    .formulario-fale-conosco {
-        width: 70%;
-        max-width: 500px;
-    }
-
-    .caixa-mae {
-        padding: 30px 20px 80px 20px;
-    }
-
-    .caixa-mae>div:first-child button {
-        bottom: 15px;
-        width: 180px;
-        height: 45px;
-    }
-}
-
-.caixa-um {
-    position: relative;
-    z-index: 1;
-}
-
-
-
-.sugest-button {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.paragr-um {
-    
-  display: flex;
-  justify-content: center; /* centraliza na horizontal */
-  align-items: center;     /* centraliza na vertical (se tiver altura definida) */
-  gap: 20px;               /* espaço entre os itens */
-  flex-wrap: wrap;         /* permite quebrar linha */
-
-    margin-top: 30px;
-  color: white;
-  font-size: clamp(16px, 2vw, 24px); /* Ajusta o tamanho entre 16px e 24px */
-  text-align: center;
-  max-width: 600px; /* Limita a largura máxima */
-  margin: 0 auto; /* Centraliza na tela */
-  padding: 0 10px; /* Evita que o texto grude nas bordas */
-}
-
-.paragr-dois {
-    
-  display: flex;
-  justify-content: center; /* centraliza na horizontal */
-  align-items: center;     /* centraliza na vertical (se tiver altura definida) */
-  gap: 20px;               /* espaço entre os itens */
-  flex-wrap: wrap;         /* permite quebrar linha */
-
-    margin-bottom: 40px;
-  color: white;
-  font-size: clamp(16px, 2vw, 24px); /* Ajusta o tamanho entre 16px e 24px */
-  text-align: center;
-  max-width: 600px; /* Limita a largura máxima */
-  margin: 0 auto; /* Centraliza na tela */
-  padding: 0 10px; /* Evita que o texto grude nas bordas */
-}
-
-.h2 {
-    color: white;
-    font-size: 36px;
-    text-align: center;
-    margin-top: 20px;
-}
-.h2:hover {
-    color: #c51111;
-    transition: 0.7s ease-in-out;
-
-}
-
-body { 
-       font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    line-height: 1.6;
-}
-
-.caixa-conv {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.caixa-conv h1 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 30px;
-    font-size: 2.5em;
-    font-weight: 600;
-}
-
-/* Seção de Convênios */
-#convenios {
-    text-align: center;
-    padding: 20px;
-    background-color: #e3f2fd;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    border-left: 5px solid #2196f3;
-}
-
-#convenios h3 {
-    color: #1565c0;
-    font-size: 1.4em;
-}
-
-/* Seção de Colaboradores */
-#colaboradores {
-    text-align: center;
-    padding: 20px;
-    background-color: #f3e5f5;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    border-left: 5px solid #9c27b0;
-}
-
-#colaboradores h3 {
-    color: #7b1fa2;
-    font-size: 1.3em;
-}
-
-/* Seção de Parcerias */
-#parcerias {
-    padding: 25px;
-    background-color: #fff8e1;
-    border-radius: 10px;
-    text-align: center;
-    border-left: 5px solid #ffc107;
-}
-
-#parcerias h2 {
-    color: #e65100;
-    font-size: 1.5em;
-    font-weight: 500;
-}
-
-
-@media (max-width: 768px) {
-    .caixa-conv {
-        margin: 20px;
-        padding: 15px;
-    }
-
-    .caixa-conv h1 {
-        font-size: 2em;
-    }
-
-    #convenios h3,
-    #colaboradores h3,
-    #parcerias h2 {
-        font-size: 1.1em;
-    }
-}
-
-
+/* ==============================
+   PÁGINA: PROFISSIONAIS
+============================== */
 
 .professionals-header {
     text-align: center;
-    padding: 3rem 1rem;
+    padding: 4rem 1rem 3rem;
     background: linear-gradient(135deg, #2c5530, #4a7c59);
     color: white;
     margin-bottom: 3rem;
     border-bottom: 5px solid #f1c40f;
+    position: relative;
+    z-index: 10;
 }
 
 .professionals-header h1 {
@@ -772,6 +495,8 @@ body {
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 10;
 }
 
 .professional-card {
@@ -818,14 +543,17 @@ body {
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
     font-weight: bold;
-    transition: background 0.3s;
+    transition: all 0.3s;
     margin-top: 1rem;
     font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-whatsapp:hover {
     background: #128C7E;
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
 /* Área de Anúncios Visuais */
@@ -836,6 +564,8 @@ body {
     text-align: center;
     border-top: 3px dashed #e67e22;
     border-bottom: 3px dashed #e67e22;
+    position: relative;
+    z-index: 10;
 }
 
 .ads-visual-section h2 {
@@ -848,14 +578,16 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     background: white;
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 .ad-visual-container iframe {
+    width: 100%;
+    height: 300px;
     border-radius: 8px;
-    background: #f0f0f0;
+    border: none;
 }
 
 .ad-note {
@@ -873,6 +605,8 @@ body {
 .back-to-home {
     text-align: center;
     padding: 2rem;
+    position: relative;
+    z-index: 10;
 }
 
 .btn-back {
@@ -883,8 +617,11 @@ body {
     text-decoration: none;
     border-radius: 8px;
     font-weight: bold;
-    transition: background 0.3s;
+    transition: all 0.3s;
     font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .btn-back:hover {
@@ -892,10 +629,274 @@ body {
     transform: scale(1.05);
 }
 
-/* Responsividade */
+/* ==============================
+   PÁGINA: CONVÊNIOS
+============================== */
+
+.caixa-conv {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.caixa-conv h1 {
+    color: #2c3e50;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#convenios, #colaboradores, #parcerias {
+    padding: 30px;
+    margin: 30px 0;
+    border-radius: 12px;
+    position: relative;
+    z-index: 10;
+}
+
+#convenios {
+    background-color: #e3f2fd;
+    border-left: 6px solid #2196f3;
+}
+
+#colaboradores {
+    background-color: #f3e5f5;
+    border-left: 6px solid #9c27b0;
+}
+
+#parcerias {
+    background-color: #fff8e1;
+    border-left: 6px solid #ffc107;
+}
+
+#convenios h3, #colaboradores h3, #parcerias h2 {
+    font-size: 1.4em;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* ==============================
+   PÁGINA: SOBRE NÓS (SBN)
+============================== */
+
+.sbn-page .about-section {
+    padding: 6rem 1rem 4rem;
+    color: white;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.sbn-page .about-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.sbn-page .about-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.sbn-page .lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.sbn-page .service-offer {
+    background: rgba(255,255,255,0.1);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 3rem;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.sbn-page .service-offer h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #f1c40f;
+}
+
+.sbn-page .service-offer p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.sbn-page .btn-hire {
+    display: inline-block;
+    background: #e67e22;
+    color: white;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+}
+
+.sbn-page .btn-hire:hover {
+    background: #d35400;
+    transform: scale(1.05);
+}
+
+.sbn-page .suggestion-section {
+    padding: 4rem 1rem;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.sbn-page .suggestion-box {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.08);
+    padding: 3rem;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    z-index: 10;
+}
+
+.sbn-page .suggestion-box h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #f1c40f;
+}
+
+.sbn-page .suggestion-box p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.sbn-page .suggestion-box textarea {
+    width: 100%;
+    height: 120px;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid #555;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    resize: vertical;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+}
+
+.sbn-page .suggestion-box textarea:focus {
+    outline: none;
+    border-color: #f39c12;
+    background: rgba(255,255,255,0.15);
+}
+
+.sbn-page .btn-submit {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.8rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.sbn-page .btn-submit:hover {
+    background: #229954;
+    transform: translateY(-2px);
+}
+
+.sbn-page .form-message {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    display: none;
+    position: relative;
+    z-index: 10;
+}
+
+.sbn-page .form-message.error {
+    background: #e74c3c;
+    color: white;
+    display: block;
+}
+
+.sbn-page .form-message.success {
+    background: #27ae60;
+    color: white;
+    display: block;
+}
+
+/* ==============================
+   FOOTER GLOBAL
+============================== */
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* ==============================
+   RESPONSIVIDADE
+============================== */
+
 @media (max-width: 768px) {
-    .professionals-header h1 {
-        font-size: 2rem;
+    .header, header {
+        padding: 20px;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .header a, header nav a {
+        font-size: 20px;
+    }
+
+    .homepage main.caixa-mae {
+        flex-direction: column;
+        padding: 60px 20px;
+        gap: 30px;
+        min-height: auto;
+    }
+
+    .homepage .content-left,
+    .homepage .content-center,
+    .homepage .dialogo {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .formulario-fale-conosco {
+        width: 90%;
+        max-width: 400px;
+        top: 50%;
+        left: -100%;
+        transform: translate(-50%, -50%);
+    }
+
+    .formulario-fale-conosco.open {
+        left: 50%;
     }
 
     .professionals-grid {
@@ -907,383 +908,97 @@ body {
         padding: 1.5rem;
     }
 
-    .ad-visual-container iframe {
-        height: 250px;
+    .caixa-conv {
+        margin: 30px 15px;
+        padding: 25px;
+    }
+
+    .caixa-conv h1 {
+        font-size: 2em;
+    }
+
+    .link-whatsapp img {
+        height: 50px;
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .homepage button {
+        width: 180px;
+        height: 45px;
+        font-size: 14px;
+    }
+
+    /* Botão fixo no mobile */
+    .homepage .caixa-mae > div:first-child button {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10000;
+        margin: 0;
+    }
+
+    .homepage main.caixa-mae {
+        padding-bottom: 100px;
     }
 }
 
-/* === PÁGINA: QUEM SOMOS === */
-
-.video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    overflow: hidden;
-}
-
-.video-background video {
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Escurece o fundo para melhor leitura */
-    z-index: -1;
-}
-
-/* Header */
-header {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 1rem 0;
-    position: relative;
-    z-index: 10;
-}
-
-nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background 0.3s;
-}
-
-nav a:hover, nav a.active {
-    background: #e67e22;
-}
-
-/* Main Sections */
-main {
-    position: relative;
-    z-index: 1;
-}
-
-.about-section {
-    padding: 6rem 1rem 4rem;
-    color: white;
-    text-align: center;
-}
-
-.about-content {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.about-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-}
-
-.lead {
-    font-size: 1.2rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    font-weight: 400;
-}
-
-.service-offer {
-    background: rgba(255,255,255,0.1);
-    padding: 2rem;
-    border-radius: 12px;
-    margin-top: 3rem;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255,255,255,0.2);
-}
-
-.service-offer h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #f1c40f;
-}
-
-.service-offer p {
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-}
-
-.btn-hire {
-    display: inline-block;
-    background: #e67e22;
-    color: white;
-    padding: 0.8rem 2rem;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: background 0.3s;
-    font-size: 1.1rem;
-}
-
-.btn-hire:hover {
-    background: #d35400;
-    transform: scale(1.05);
-}
-
-/* Seção de Sugestões */
-.suggestion-section {
-    padding: 4rem 1rem;
-    background: rgba(0,0,0,0.8);
-    color: white;
-    text-align: center;
-}
-
-.suggestion-box {
-    max-width: 700px;
-    margin: 0 auto;
-    background: rgba(255,255,255,0.08);
-    padding: 3rem;
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.suggestion-box h1 {
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
-    color: #f1c40f;
-}
-
-.suggestion-box p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-}
-
-.suggestion-box textarea {
-    width: 100%;
-    height: 120px;
-    padding: 1rem;
-    border-radius: 8px;
-    border: 2px solid #555;
-    background: rgba(255,255,255,0.1);
-    color: white;
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    resize: vertical;
-    box-sizing: border-box;
-}
-
-.suggestion-box textarea:focus {
-    outline: none;
-    border-color: #f39c12;
-    background: rgba(255,255,255,0.15);
-}
-
-.btn-submit {
-    background: #27ae60;
-    color: white;
-    border: none;
-    padding: 0.8rem 2.5rem;
-    font-size: 1.1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-.btn-submit:hover {
-    background: #229954;
-    transform: translateY(-2px);
-}
-
-/* Mensagens de Feedback */
-.form-message {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    border-radius: 8px;
-    font-weight: bold;
-    display: none;
-}
-
-.form-message.error {
-    background: #e74c3c;
-    color: white;
-    display: block;
-}
-
-.form-message.success {
-    background: #27ae60;
-    color: white;
-    display: block;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 2rem;
-    background: rgba(0,0,0,0.7);
-    color: white;
-    margin-top: 3rem;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .about-section {
-        padding: 4rem 1rem 3rem;
+@media (max-width: 480px) {
+    .header, header {
+        padding: 15px;
+        gap: 10px;
     }
 
-    .about-content h2 {
-        font-size: 2rem;
+    .header a, header nav a {
+        font-size: 18px;
     }
 
-    .lead {
-        font-size: 1.1rem;
+    .formulario-fale-conosco {
+        width: 95%;
+        padding: 20px 15px;
+        font-size: 13px;
     }
 
-    .suggestion-box {
-        padding: 2rem 1.5rem;
+    .close-btn {
+        font-size: 20px;
+        width: 25px;
+        height: 25px;
     }
 
-    .suggestion-box h1 {
-        font-size: 1.8rem;
+    .grid-2 {
+        gap: 8px;
     }
 
-    .btn-submit, .btn-hire {
-        width: 100%;
-        margin-top: 1rem;
+    .form-group label {
+        font-size: 13px;
     }
-}
 
-/* === CORREÇÃO ESPECÍFICA PARA PÁGINA "QUEM SOMOS" === */
+    .form-control {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
 
-/* Garante que o conteúdo principal fique ACIMA do vídeo e overlay */
-body.quemsomos-page {
-    position: relative;
-}
+    .calculate-btn {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
 
-.quemsomos-page main {
-    position: relative;
-    z-index: 10; /* Fica acima do overlay (z-index: -1) */
-    color: white;
-}
+    .results-title {
+        font-size: 16px;
+    }
 
-/* Seção de Sobre — ajuste de espaçamento e posicionamento */
-.quemsomos-page .about-section {
-    padding: 6rem 1rem 4rem;
-    text-align: center;
-    position: relative;
-    z-index: 10;
-}
+    .price-highlight {
+        font-size: 20px;
+    }
 
-/* Caixa de sugestões — garantir que fique visível e centralizada */
-.quemsomos-page .suggestion-section {
-    padding: 4rem 1rem;
-    background: rgba(0,0,0,0.8);
-    text-align: center;
-    position: relative;
-    z-index: 10;
-}
+    .homepage button {
+        width: 160px;
+        height: 40px;
+        font-size: 13px;
+    }
 
-.quemsomos-page .suggestion-box {
-    max-width: 700px;
-    margin: 0 auto;
-    background: rgba(255,255,255,0.08);
-    padding: 3rem;
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.1);
-    position: relative;
-    z-index: 10;
-}
-
-/* Botão de envio de sugestão — garantir visibilidade */
-.quemsomos-page .btn-submit {
-    background: #27ae60;
-    color: white;
-    border: none;
-    padding: 0.8rem 2.5rem;
-    font-size: 1.1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
-    position: relative;
-    z-index: 10;
-}
-
-/* Textarea de sugestão */
-.quemsomos-page .suggestion-box textarea {
-    width: 100%;
-    height: 120px;
-    padding: 1rem;
-    border-radius: 8px;
-    border: 2px solid #555;
-    background: rgba(255,255,255,0.1);
-    color: white;
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    resize: vertical;
-    box-sizing: border-box;
-    position: relative;
-    z-index: 10;
-}
-
-.quemsomos-page .suggestion-box textarea:focus {
-    outline: none;
-    border-color: #f39c12;
-    background: rgba(255,255,255,0.15);
-}
-
-/* Mensagens de feedback */
-.quemsomos-page .form-message {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    border-radius: 8px;
-    font-weight: bold;
-    display: none;
-    position: relative;
-    z-index: 10;
-}
-
-.quemsomos-page .form-message.error {
-    background: #e74c3c;
-    color: white;
-    display: block;
-}
-
-.quemsomos-page .form-message.success {
-    background: #27ae60;
-    color: white;
-    display: block;
-}
-
-/* Header e navegação — garantir que fiquem visíveis */
-.quemsomos-page header {
-    position: relative;
-    z-index: 20; /* Fica acima de tudo */
-}
-
-/* Footer */
-.quemsomos-page footer {
-    position: relative;
-    z-index: 10;
-    background: rgba(0,0,0,0.7);
-    color: white;
-    padding: 2rem;
-    text-align: center;
+    .link-whatsapp img {
+        height: 40px;
+    }
 }
