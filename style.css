@@ -723,7 +723,7 @@ body {
     font-weight: 500;
 }
 
-/* Responsividade */
+
 @media (max-width: 768px) {
     .caixa-conv {
         margin: 20px;
@@ -738,5 +738,176 @@ body {
     #colaboradores h3,
     #parcerias h2 {
         font-size: 1.1em;
+    }
+}
+
+
+
+.professionals-header {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: linear-gradient(135deg, #2c5530, #4a7c59);
+    color: white;
+    margin-bottom: 3rem;
+    border-bottom: 5px solid #f1c40f;
+}
+
+.professionals-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.professionals-header p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 500;
+}
+
+.professionals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.professional-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 4px solid #f39c12;
+}
+
+.professional-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.professional-card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.professional-card p {
+    color: #555;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.phone {
+    font-weight: bold;
+    color: #27ae60;
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+.btn-whatsapp {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.btn-whatsapp:hover {
+    background: #128C7E;
+    transform: scale(1.03);
+}
+
+/* Área de Anúncios Visuais */
+.ads-visual-section {
+    background: #f8f9fa;
+    padding: 3rem 1rem;
+    margin: 4rem 0;
+    text-align: center;
+    border-top: 3px dashed #e67e22;
+    border-bottom: 3px dashed #e67e22;
+}
+
+.ads-visual-section h2 {
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.ad-visual-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.ad-visual-container iframe {
+    border-radius: 8px;
+    background: #f0f0f0;
+}
+
+.ad-note {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.ad-note a {
+    color: #e67e22;
+    text-decoration: underline;
+}
+
+/* Botão de Retorno */
+.back-to-home {
+    text-align: center;
+    padding: 2rem;
+}
+
+.btn-back {
+    display: inline-block;
+    background: #34495e;
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s;
+    font-size: 1.1rem;
+}
+
+.btn-back:hover {
+    background: #2c3e50;
+    transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .professionals-header h1 {
+        font-size: 2rem;
+    }
+
+    .professionals-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .professional-card {
+        padding: 1.5rem;
+    }
+
+    .ad-visual-container iframe {
+        height: 250px;
     }
 }
