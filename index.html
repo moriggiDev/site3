@@ -12,10 +12,10 @@
         <video src="./img/background_video.mp4" autoplay muted loop playsinline></video>
     </div>
 
-    <!-- Overlay para melhorar contraste do texto -->
+    <!-- Overlay -->
     <div class="overlay"></div>
 
-    <!-- Cabeçalho SEM LOGO -->
+    <!-- Header SEM logo -->
     <header class="header">
         <a href="./conv.html">Convênio</a>
         <a href="./prof.html">Profissionais</a>
@@ -25,7 +25,9 @@
     <!-- Conteúdo Principal -->
     <main class="caixa-mae">
         <div class="content-left">
-            <p>Prestamos serviços de azulejista, gesseiro, telhadista, pedreiro, carpinteiro, armador e marceneiro</p>
+            <img src="./img/icon-obra.png" alt="Ícone de construção" class="main-icon">
+            <!-- ✅ TEXTO AJUSTADO COM MARGIN-TOP -->
+            <p class="descricao-servico">Prestamos serviços de azulejista, gesseiro, telhadista, pedreiro, carpinteiro, armador e marceneiro</p>
             <button onclick="mostrarForm()">Calculadora</button>
         </div>
 
@@ -52,7 +54,7 @@
     </a>
 
     <!-- Formulário de Cálculo -->
-    <form class="formulario-fale-conosco">
+    <form class="formulario-fale-conosco" id="calcForm">
         <div class="form-header">
             <div class="form-title">Materiais de Construção</div>
             <button type="button" class="close-btn" onclick="esconderForm()">×</button>
@@ -72,12 +74,12 @@
             <div class="form-group">
                 <label>Dimensões (m)</label>
                 <div class="grid-2">
-                    <div><input type="number" id="length" placeholder="Comprimento" class="form-control"></div>
-                    <div><input type="number" id="width" placeholder="Largura" class="form-control"></div>
+                    <div><input type="number" id="length" placeholder="Comprimento" class="form-control" step="0.01"></div>
+                    <div><input type="number" id="width" placeholder="Largura" class="form-control" step="0.01"></div>
                 </div>
             </div>
 
-            
+            <!-- REMOVIDO: Altura da Parede -->
 
             <div id="tileTypeSection" class="form-group" style="display: none;">
                 <label for="tileType">Tipo de Peça</label>
@@ -165,8 +167,8 @@
         </div>
     </form>
 
-    <!-- Máscara para fechar formulário -->
-    <div class="mascara-formulario" onclick="esconderForm()" style="display: none;"></div>
+    <!-- Máscara -->
+    <div class="mascara-formulario" onclick="esconderForm()"></div>
 
     <!-- Scripts -->
     <script src="scripts.js"></script>

@@ -240,9 +240,20 @@ header nav ul {
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
+/* ==============================
+   AJUSTE DO TEXTO ACIMA DO BOTÃO
+============================== */
+
+.descricao-servico {
+    color: white;
+    font-size: 20px;
+    margin: 30px 0 20px; /* ✅ margin-top de 30px, margin-bottom de 20px */
+    line-height: 1.5;
+    text-align: center;
+}
 
 /* ==============================
-   FORMULÁRIO FLUTUANTE (CÁLCULO) - POSIÇÃO AJUSTADA
+   FORMULÁRIO AJUSTADO — POSIÇÃO IDEAL
 ============================== */
 
 .formulario-fale-conosco {
@@ -251,26 +262,25 @@ header nav ul {
     flex-direction: column;
     gap: 20px;
     position: fixed;
-    top: 80px; /* 👈 REDUZIDO de 100px para 80px — ajuste fino */
+    top: 80px;
     left: 50%;
     transform: translateX(-50%);
     padding: 25px;
     border-radius: 10px;
     transition: all 0.3s ease;
     width: 420px;
-    max-height: calc(100vh - 120px); /* Ajustado para combinar com novo top */
+    max-height: calc(100vh - 120px);
     overflow-y: auto;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     z-index: 10000;
     font-size: 14px;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     .formulario-fale-conosco {
         width: 90%;
         max-width: 400px;
-        top: 70px; /* 👈 Ajustado de 80px para 70px */
+        top: 70px;
         left: 50%;
         transform: translateX(-50%);
         max-height: calc(100vh - 110px);
@@ -281,14 +291,14 @@ header nav ul {
 @media (max-width: 480px) {
     .formulario-fale-conosco {
         width: 95%;
-        top: 60px; /* 👈 Ajustado de 70px para 60px */
+        top: 60px;
         padding: 20px 10px;
         font-size: 13px;
         max-height: calc(100vh - 100px);
     }
 }
 
-
+/* Garante que a máscara cubra tudo quando o formulário estiver aberto */
 .mascara-formulario {
     position: fixed;
     top: 0;
