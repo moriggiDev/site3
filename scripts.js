@@ -397,3 +397,17 @@ function resetForm() {
     resultsSection.style.display = 'none';
 }
 */
+
+function mostrarForm() {
+    document.querySelector('.formulario-fale-conosco').classList.add('open');
+    document.querySelector('.mascara-formulario').style.display = 'block';
+    
+    // Rola suavemente até o formulário
+    const form = document.querySelector('.formulario-fale-conosco');
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function esconderForm() {
+    document.querySelector('.formulario-fale-conosco').classList.remove('open');
+    document.querySelector('.mascara-formulario').style.display = 'none';
+}
