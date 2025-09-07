@@ -1,22 +1,16 @@
+// scripts.js — Calculadora de Materiais — VERSÃO FINAL
+
 function mostrarForm() {
     const form = document.querySelector('.formulario-fale-conosco');
     const mask = document.querySelector('.mascara-formulario');
     
     form.classList.add('open');
     mask.style.display = 'block';
-    
-    // Reseta o scroll interno do formulário
     form.scrollTop = 0;
-    
-    // Calcula a posição exata para rolar a página
-    const headerHeight = document.querySelector('header').offsetHeight;
-    const offset = headerHeight + 20; // 20px de margem extra abaixo do header
-    
-    // Rola suavemente até a posição ideal
-    window.scrollTo({
-        top: offset,
-        behavior: 'smooth'
-    });
+
+    const header = document.querySelector('header');
+    const offset = (header ? header.offsetHeight : 0) + 20;
+    window.scrollTo({ top: offset, behavior: 'smooth' });
 }
 
 function esconderForm() {
@@ -27,18 +21,16 @@ function esconderForm() {
     mask.style.display = 'none';
 }
 
-// ====== CONTROLE DINÂMICO DE CAMPOS ======
-
-// Atualiza valor do slider de perda
-document.getElementById('wasteFactor').addEventListener('input', function() {
-    document.getElementById('wasteValue').textContent = this.value + '%';
+// Atualiza slider de perda
+document.getElementById('wasteFactor')?.addEventListener('input', function() {
+    const value = this.value;
+    document.getElementById('wasteValue').textContent = value + '%';
 });
 
-// Mostra/oculta seções conforme tipo de material
-document.getElementById('materialType').addEventListener('change', function() {
+// Mostra/oculta campos conforme material
+document.getElementById('materialType')?.addEventListener('change', function() {
     const material = this.value;
     const sections = [
-        'heightSection', 
         'tileTypeSection', 
         'blockTypeSection', 
         'paintTypeSection', 
@@ -47,27 +39,20 @@ document.getElementById('materialType').addEventListener('change', function() {
         'customBlockDimensions'
     ];
     
-    // Esconde todas
     sections.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none';
     });
 
-    // Mostra específicas — SEM heightSection
     if (material === 'ceramica' || material === 'azulejo') {
-        // REMOVIDO: document.getElementById('heightSection').style.display = 'block';
         document.getElementById('tileTypeSection').style.display = 'block';
-        
-        // Verifica se está em modo personalizado
-        if (document.getElementById('tileType').value === 'personalizado') {
+        if (document.getElementById('tileType')?.value === 'personalizado') {
             document.getElementById('customDimensions').style.display = 'block';
         }
     } 
     else if (material === 'blocos') {
-        // REMOVIDO: document.getElementById('heightSection').style.display = 'block';
         document.getElementById('blockTypeSection').style.display = 'block';
-        
-        if (document.getElementById('blockType').value === 'personalizado') {
+        if (document.getElementById('blockType')?.value === 'personalizado') {
             document.getElementById('customBlockDimensions').style.display = 'block';
         }
     } 
@@ -77,61 +62,51 @@ document.getElementById('materialType').addEventListener('change', function() {
     }
 });
 
-// Controle de peças personalizadas (azulejo/cerâmica)
-document.getElementById('tileType').addEventListener('change', function() {
+// Controle campos personalizados
+document.getElementById('tileType')?.addEventListener('change', function() {
     const custom = document.getElementById('customDimensions');
-    if (this.value === 'personalizado') {
+    if (this.value === 'personalizado' && custom) {
         custom.style.display = 'block';
-    } else {
+    } else if (custom) {
         custom.style.display = 'none';
     }
 });
 
-// Controle de blocos personalizados
-document.getElementById('blockType').addEventListener('change', function() {
+document.getElementById('blockType')?.addEventListener('change', function() {
     const custom = document.getElementById('customBlockDimensions');
-    if (this.value === 'personalizado') {
+    if (this.value === 'personalizado' && custom) {
         custom.style.display = 'block';
-    } else {
+    } else if (custom) {
         custom.style.display = 'none';
     }
 });
 
-// ====== FUNÇÃO DE CÁLCULO ======
-
-function calcularArea() {
-    const length = parseFloat(document.getElementById('length').value);
-    const width = parseFloat(document.getElementById('width').value);
-    
-    if (length > 0 && width > 0 && !isNaN(length) && !isNaN(width)) {
-        return length * width;
-    }
-    return 0;
-}
-
-document.getElementById('calculateBtn').addEventListener('click', function(e) {
+// Função de cálculo
+document.getElementById('calculateBtn')?.addEventListener('click', function(e) {
     e.preventDefault();
     
-    const materialType = document.getElementById('materialType').value;
-    const wasteFactor = parseFloat(document.getElementById('wasteFactor').value) / 100;
-    const area = calcularArea();
-    
-    if (area <= 0) {
-        alert('⚠️ Por favor, informe comprimento e largura válidos (maiores que zero).');
+    const length = parseFloat(document.getElementById('length')?.value || 0);
+    const width = parseFloat(document.getElementById('width')?.value || 0);
+    const materialType = document.getElementById('materialType')?.value;
+    const wasteFactor = parseFloat(document.getElementById('wasteFactor')?.value || 0) / 100;
+
+    if (!length || !width || length <= 0 || width <= 0) {
+        alert('⚠️ Informe comprimento e largura válidos.');
         return;
     }
 
     let results = '';
     let totalCost = 0;
+    const area = length * width;
 
     // === CERÂMICA OU AZULEJO ===
     if (materialType === 'ceramica' || materialType === 'azulejo') {
-        const tileType = document.getElementById('tileType').value;
+        const tileType = document.getElementById('tileType')?.value;
         let tileWidth, tileHeight;
 
         if (tileType === 'personalizado') {
-            tileWidth = parseFloat(document.getElementById('customWidth').value);
-            tileHeight = parseFloat(document.getElementById('customHeight').value);
+            tileWidth = parseFloat(document.getElementById('customWidth')?.value || 0);
+            tileHeight = parseFloat(document.getElementById('customHeight')?.value || 0);
         } else {
             const [w, h] = tileType.split('x').map(n => parseInt(n));
             tileWidth = w;
@@ -139,57 +114,35 @@ document.getElementById('calculateBtn').addEventListener('click', function(e) {
         }
 
         if (!tileWidth || !tileHeight || tileWidth <= 0 || tileHeight <= 0) {
-            alert('⚠️ Por favor, informe dimensões válidas para a peça.');
+            alert('⚠️ Dimensões da peça inválidas.');
             return;
         }
 
-        // ✅ REMOVIDO: const height = ... (não usamos mais altura)
-        // ✅ AGORA: calculamos apenas para a área fornecida (piso ou parede única)
-        const tileArea = (tileWidth * tileHeight) / 10000; // converte cm² para m²
+        const tileArea = (tileWidth * tileHeight) / 10000;
         const tilesNeeded = area / tileArea;
         const tilesWithWaste = tilesNeeded * (1 + wasteFactor);
-        const boxes = Math.ceil(tilesWithWaste / 10); // 10 peças por caixa
-
-        const pricePerBox = materialType === 'ceramica' ? 250 : 180; // preço por caixa
+        const boxes = Math.ceil(tilesWithWaste / 10);
+        const pricePerBox = materialType === 'ceramica' ? 250 : 180;
         totalCost = boxes * pricePerBox;
 
         results = `
-            <div class="results-item">
-                <span>Material:</span>
-                <span class="results-value">${materialType === 'ceramica' ? 'Cerâmica' : 'Azulejo'}</span>
-            </div>
-            <div class="results-item">
-                <span>Dimensão da Peça:</span>
-                <span class="results-value">${tileWidth} × ${tileHeight} cm</span>
-            </div>
-            <!-- ✅ REMOVIDO: Altura da Parede -->
-            <div class="results-item">
-                <span>Área Total:</span>
-                <span class="results-value">${area.toFixed(2)} m²</span>
-            </div>
-            <div class="results-item">
-                <span>Peças Necessárias:</span>
-                <span class="results-value">${Math.ceil(tilesNeeded)}</span>
-            </div>
-            <div class="results-item">
-                <span>Com Perda (${(wasteFactor * 100).toFixed(0)}%):</span>
-                <span class="results-value">${Math.ceil(tilesWithWaste)}</span>
-            </div>
-            <div class="results-item">
-                <span>Caixas (10 peças):</span>
-                <span class="results-value">${boxes}</span>
-            </div>
+            <div class="results-item"><span>Material:</span> <span>${materialType === 'ceramica' ? 'Cerâmica' : 'Azulejo'}</span></div>
+            <div class="results-item"><span>Dimensão da Peça:</span> <span>${tileWidth} × ${tileHeight} cm</span></div>
+            <div class="results-item"><span>Área Total:</span> <span>${area.toFixed(2)} m²</span></div>
+            <div class="results-item"><span>Peças Necessárias:</span> <span>${Math.ceil(tilesNeeded)}</span></div>
+            <div class="results-item"><span>Com Perda:</span> <span>${Math.ceil(tilesWithWaste)}</span></div>
+            <div class="results-item"><span>Caixas (10 peças):</span> <span>${boxes}</span></div>
         `;
     }
 
     // === BLOCOS ===
     else if (materialType === 'blocos') {
-        const blockType = document.getElementById('blockType').value;
-        let blockWidth, blockHeight, blockLength = 39; // comprimento padrão
+        const blockType = document.getElementById('blockType')?.value;
+        let blockWidth, blockHeight, blockLength = 39;
 
         if (blockType === 'personalizado') {
-            blockWidth = parseFloat(document.getElementById('blockWidth').value);
-            blockHeight = parseFloat(document.getElementById('blockHeight').value);
+            blockWidth = parseFloat(document.getElementById('blockWidth')?.value || 0);
+            blockHeight = parseFloat(document.getElementById('blockHeight')?.value || 0);
         } else {
             const [w, h] = blockType.split('x').map(n => parseInt(n));
             blockWidth = w;
@@ -197,173 +150,82 @@ document.getElementById('calculateBtn').addEventListener('click', function(e) {
         }
 
         if (!blockWidth || !blockHeight || blockWidth <= 0 || blockHeight <= 0) {
-            alert('⚠️ Por favor, informe dimensões válidas para o bloco.');
+            alert('⚠️ Dimensões do bloco inválidas.');
             return;
         }
 
-        // ✅ REMOVIDO: const height = ... (não usamos mais altura)
-        // ✅ AGORA: calculamos blocos para a área fornecida (ex: piso, ou parede única)
-        const blockFaceArea = (blockLength * blockHeight) / 10000; // face que será assentada
+        const blockFaceArea = (blockLength * blockHeight) / 10000;
         const blocksNeeded = area / blockFaceArea;
         const blocksWithWaste = blocksNeeded * (1 + wasteFactor);
-        const palets = Math.ceil(blocksWithWaste / 50); // 50 blocos por palete
-
+        const palets = Math.ceil(blocksWithWaste / 50);
         const pricePerBlock = 1.80;
         totalCost = blocksWithWaste * pricePerBlock;
 
         results = `
-            <div class="results-item">
-                <span>Material:</span>
-                <span class="results-value">Blocos</span>
-            </div>
-            <div class="results-item">
-                <span>Dimensão do Bloco:</span>
-                <span class="results-value">${blockWidth} × ${blockHeight} × ${blockLength} cm</span>
-            </div>
-            <!-- ✅ REMOVIDO: Altura da Parede -->
-            <div class="results-item">
-                <span>Área de Aplicação:</span>
-                <span class="results-value">${area.toFixed(2)} m²</span>
-            </div>
-            <div class="results-item">
-                <span>Blocos Necessários:</span>
-                <span class="results-value">${Math.ceil(blocksNeeded)}</span>
-            </div>
-            <div class="results-item">
-                <span>Com Perda (${(wasteFactor * 100).toFixed(0)}%):</span>
-                <span class="results-value">${Math.ceil(blocksWithWaste)}</span>
-            </div>
-            <div class="results-item">
-                <span>Palete(s) (50 und):</span>
-                <span class="results-value">${palets}</span>
-            </div>
+            <div class="results-item"><span>Material:</span> <span>Blocos</span></div>
+            <div class="results-item"><span>Dimensão:</span> <span>${blockWidth} × ${blockHeight} × ${blockLength} cm</span></div>
+            <div class="results-item"><span>Área:</span> <span>${area.toFixed(2)} m²</span></div>
+            <div class="results-item"><span>Blocos Necessários:</span> <span>${Math.ceil(blocksNeeded)}</span></div>
+            <div class="results-item"><span>Com Perda:</span> <span>${Math.ceil(blocksWithWaste)}</span></div>
+            <div class="results-item"><span>Palete(s):</span> <span>${palets}</span></div>
         `;
     }
 
     // === TINTA ===
     else if (materialType === 'tinta') {
-        const paintType = document.getElementById('paintType').value;
-        const coats = parseInt(document.getElementById('coats').value);
-        const totalArea = area * coats; // área x demãos
-
-        let coverage = 30; // m² por litro (média)
+        const paintType = document.getElementById('paintType')?.value;
+        const coats = parseInt(document.getElementById('coats')?.value || 1);
+        const totalArea = area * coats;
         let containerSize, containerLabel, containerPrice;
 
         switch(paintType) {
-            case 'lata18':
-                containerSize = 18;
-                containerLabel = 'Lata de 18L';
-                containerPrice = 180;
-                break;
-            case 'lata36':
-                containerSize = 3.6;
-                containerLabel = 'Lata de 3,6L';
-                containerPrice = 45;
-                break;
-            case 'galao36':
-                containerSize = 3.6;
-                containerLabel = 'Galão de 3,6L';
-                containerPrice = 42;
-                break;
-            case 'balde18':
-                containerSize = 18;
-                containerLabel = 'Balde de 18L';
-                containerPrice = 170;
-                break;
-            default:
-                containerSize = 18;
-                containerLabel = 'Lata de 18L';
-                containerPrice = 180;
+            case 'lata18': containerSize = 18; containerLabel = 'Lata 18L'; containerPrice = 180; break;
+            case 'lata36': containerSize = 3.6; containerLabel = 'Lata 3,6L'; containerPrice = 45; break;
+            case 'galao36': containerSize = 3.6; containerLabel = 'Galão 3,6L'; containerPrice = 42; break;
+            case 'balde18': containerSize = 18; containerLabel = 'Balde 18L'; containerPrice = 170; break;
+            default: containerSize = 18; containerLabel = 'Lata 18L'; containerPrice = 180;
         }
 
-        const litersNeeded = totalArea / coverage;
+        const litersNeeded = totalArea / 30;
         const litersWithWaste = litersNeeded * (1 + wasteFactor);
         const containers = Math.ceil(litersWithWaste / containerSize);
         totalCost = containers * containerPrice;
 
         results = `
-            <div class="results-item">
-                <span>Material:</span>
-                <span class="results-value">Tinta</span>
-            </div>
-            <div class="results-item">
-                <span>Recipiente:</span>
-                <span class="results-value">${containerLabel}</span>
-            </div>
-            <div class="results-item">
-                <span>Demãos:</span>
-                <span class="results-value">${coats}</span>
-            </div>
-            <div class="results-item">
-                <span>Área Total:</span>
-                <span class="results-value">${totalArea.toFixed(2)} m²</span>
-            </div>
-            <div class="results-item">
-                <span>Rendimento:</span>
-                <span class="results-value">${coverage} m²/L</span>
-            </div>
-            <div class="results-item">
-                <span>Litros Necessários:</span>
-                <span class="results-value">${litersNeeded.toFixed(2)} L</span>
-            </div>
-            <div class="results-item">
-                <span>Com Perda (${(wasteFactor * 100).toFixed(0)}%):</span>
-                <span class="results-value">${litersWithWaste.toFixed(2)} L</span>
-            </div>
-            <div class="results-item">
-                <span>Recipientes Necessários:</span>
-                <span class="results-value">${containers}</span>
-            </div>
+            <div class="results-item"><span>Material:</span> <span>Tinta</span></div>
+            <div class="results-item"><span>Recipiente:</span> <span>${containerLabel}</span></div>
+            <div class="results-item"><span>Demãos:</span> <span>${coats}</span></div>
+            <div class="results-item"><span>Área Total:</span> <span>${totalArea.toFixed(2)} m²</span></div>
+            <div class="results-item"><span>Recipientes:</span> <span>${containers}</span></div>
         `;
     }
 
     // Exibe resultados
-    document.getElementById('resultsContent').innerHTML = results;
-    document.getElementById('totalCost').textContent = `R$ ${totalCost.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
-    
-    // Alterna as seções
+    const resultsContent = document.getElementById('resultsContent');
+    const totalCostEl = document.getElementById('totalCost');
     const inputSection = document.getElementById('inputSection');
     const resultsSection = document.getElementById('results');
-    inputSection.style.display = "none";
-    resultsSection.style.display = "block";
-    
-    // Animação suave
-    resultsSection.style.opacity = "0";
-    setTimeout(() => {
-        resultsSection.style.opacity = "1";
-    }, 50);
+
+    if (resultsContent) resultsContent.innerHTML = results;
+    if (totalCostEl) totalCostEl.textContent = `R$ ${totalCost.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+    if (inputSection) inputSection.style.display = "none";
+    if (resultsSection) {
+        resultsSection.style.display = "block";
+        resultsSection.style.opacity = "0";
+        setTimeout(() => { resultsSection.style.opacity = "1"; }, 50);
+    }
 });
 
-// Botão Voltar
-const backBtn = document.getElementById('backBtn');
-if (backBtn) {
-    backBtn.addEventListener('click', function() {
-        const inputSection = document.getElementById('inputSection');
-        const resultsSection = document.getElementById('results');
-        resultsSection.style.display = "none";
-        inputSection.style.display = "block";
-    });
-}
+// Botão voltar
+document.getElementById('backBtn')?.addEventListener('click', function() {
+    const inputSection = document.getElementById('inputSection');
+    const resultsSection = document.getElementById('results');
+    if (inputSection) inputSection.style.display = "block";
+    if (resultsSection) resultsSection.style.display = "none";
+});
 
-// ====== INICIALIZAÇÃO ======
-
-// Dispara evento change ao carregar para mostrar campos iniciais
+// Inicialização
 document.addEventListener('DOMContentLoaded', function() {
     const materialSelect = document.getElementById('materialType');
-    if (materialSelect) {
-        materialSelect.dispatchEvent(new Event('change'));
-    }
-    
-    // Ajuste mobile
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const form = document.querySelector('.formulario-fale-conosco');
-    if (isMobile && form) {
-        form.style.top = "20px";
-    }
+    if (materialSelect) materialSelect.dispatchEvent(new Event('change'));
 });
-
-// Fecha formulário ao clicar na máscara
-const mascara = document.querySelector('.mascara-formulario');
-if (mascara) {
-    mascara.addEventListener('click', esconderForm);
-}
