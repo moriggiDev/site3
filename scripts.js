@@ -5,13 +5,18 @@ function mostrarForm() {
     form.classList.add('open');
     mask.style.display = 'block';
     
-    // Força scroll para o TOPO do formulário
+    // Reseta o scroll interno do formulário
     form.scrollTop = 0;
     
-    // Opcional: rola a página até o formulário (se estiver muito abaixo)
-    setTimeout(() => {
-        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
+    // Calcula a posição exata para rolar a página
+    const headerHeight = document.querySelector('header').offsetHeight;
+    const offset = headerHeight + 20; // 20px de margem extra abaixo do header
+    
+    // Rola suavemente até a posição ideal
+    window.scrollTo({
+        top: offset,
+        behavior: 'smooth'
+    });
 }
 
 function esconderForm() {
