@@ -1,34 +1,25 @@
-// scripts.js — versão final, corrigida e aprimorada
-
-// ====== ELEMENTOS ======
-const form = document.querySelector(".formulario-fale-conosco");
-const mascara = document.querySelector(".mascara-formulario");
-const inputSection = document.getElementById('inputSection');
-const resultsSection = document.getElementById('results');
-const backBtn = document.getElementById('backBtn');
-
-// ====== FUNÇÕES DE CONTROLE DO FORMULÁRIO ======
-
 function mostrarForm() {
-    form.classList.add('open'); // Ativa animação de entrada
-    mascara.style.display = "block";
+    const form = document.querySelector('.formulario-fale-conosco');
+    const mask = document.querySelector('.mascara-formulario');
     
-    // Garante que começa na seção de entrada
-    inputSection.style.display = "block";
-    resultsSection.style.display = "none";
+    form.classList.add('open');
+    mask.style.display = 'block';
     
-    // Força repaint em mobile (evita bugs de renderização)
+    // Força scroll para o TOPO do formulário
+    form.scrollTop = 0;
+    
+    // Opcional: rola a página até o formulário (se estiver muito abaixo)
     setTimeout(() => {
-        form.style.opacity = "1";
-    }, 50);
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
 }
 
 function esconderForm() {
-    form.classList.remove('open');
-    mascara.style.display = "none";
+    const form = document.querySelector('.formulario-fale-conosco');
+    const mask = document.querySelector('.mascara-formulario');
     
-    // Opcional: resetar formulário ao fechar
-    // resetForm();
+    form.classList.remove('open');
+    mask.style.display = 'none';
 }
 
 // ====== CONTROLE DINÂMICO DE CAMPOS ======
@@ -397,17 +388,3 @@ function resetForm() {
     resultsSection.style.display = 'none';
 }
 */
-
-function mostrarForm() {
-    document.querySelector('.formulario-fale-conosco').classList.add('open');
-    document.querySelector('.mascara-formulario').style.display = 'block';
-    
-    // Rola suavemente até o formulário
-    const form = document.querySelector('.formulario-fale-conosco');
-    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function esconderForm() {
-    document.querySelector('.formulario-fale-conosco').classList.remove('open');
-    document.querySelector('.mascara-formulario').style.display = 'none';
-}
