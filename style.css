@@ -244,26 +244,55 @@ header nav ul {
    FORMULÁRIO FLUTUANTE (CÁLCULO)
 ============================== */
 
+/* ==============================
+   FORMULÁRIO FLUTUANTE (CÁLCULO) - AJUSTADO
+============================== */
+
 .formulario-fale-conosco {
     background-color: white;
     display: flex;
     flex-direction: column;
     gap: 20px;
     position: fixed;
-    top: 50%;
-    left: -300px;
-    transform: translateY(-50%);
+    top: 100px; /* 👈 AJUSTE PRINCIPAL: distância segura do topo (abaixo do header) */
+    left: 50%;
+    transform: translateX(-50%); /* 👈 Centraliza horizontalmente, SEM translateY */
     padding: 25px;
     border-radius: 10px;
-    transition: left 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     width: 420px;
-    max-height: 80vh;
+    max-height: calc(100vh - 140px); /* 👈 Limita altura para não ultrapassar a tela */
     overflow-y: auto;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     z-index: 10000;
     font-size: 14px;
-    border: none;
-    outline: none;
+}
+
+.formulario-fale-conosco.open {
+    left: 50%;
+    transform: translateX(-50%); /* Mantém a mesma transformação */
+}
+
+/* Em telas menores, ajusta largura e posição */
+@media (max-width: 768px) {
+    .formulario-fale-conosco {
+        width: 90%;
+        max-width: 400px;
+        top: 80px; /* Ajusta para header menor em mobile */
+        left: 50%;
+        transform: translateX(-50%);
+        max-height: calc(100vh - 120px);
+    }
+}
+
+@media (max-width: 480px) {
+    .formulario-fale-conosco {
+        width: 95%;
+        top: 70px; /* Ajuste fino para mobile */
+        padding: 20px 15px;
+        font-size: 13px;
+        max-height: calc(100vh - 110px);
+    }
 }
 
 .formulario-fale-conosco.open {
