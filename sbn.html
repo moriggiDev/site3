@@ -1,40 +1,107 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Sobre Nós</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Sobre Nós | BAdigital</title>
 </head>
-
 <body>
-    <section>
-        <video src="./img/background_video.mp4" autoplay muted loop></video>
-        <div class="caixa-um">
-            <div class="header">
-                <h2 class="h2">BAdigital a seu serviço!</h2>
-                <p class="paragr-um">Estamos diariámente aprimorando novas formas de atrair a atenção dos úsuarios, para
-                    nossas ferramentas,
-                    coletando sugestões e críticas construtivas, para que possamos melhorar cada vez mais nossos
-                    serviços.
-                </p>
-                <p class="paragr-dois">Nosso objetivo é facilitar a vida dos profissionais da construção civil,
-                    disponibilizando ferramentas
-                    que otimizem o tempo e melhorem a eficiência no dia a dia de trabalho.
-                </p>
+    <!-- Vídeo de Fundo -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="./img/background_video.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos em HTML5.
+        </video>
+    </div>
+
+    <!-- Overlay Escuro para Melhor Leitura -->
+    <div class="overlay"></div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">🏡 Início</a></li>
+                <li><a href="prof.html">👷 Profissionais</a></li>
+                <li><a href="quemsomos.html" class="active">👥 Quem Somos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Seção Sobre Nós -->
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2>BAdigital a seu serviço!</h2>
+                    <p class="lead">
+                        Estamos diariamente aprimorando novas formas de atrair a atenção dos usuários para nossas ferramentas,
+                        coletando sugestões e críticas construtivas, para que possamos melhorar cada vez mais nossos serviços.
+                    </p>
+                    <p class="lead">
+                        Nosso objetivo é facilitar a vida dos profissionais da construção civil, disponibilizando ferramentas
+                        que otimizem o tempo e melhorem a eficiência no dia a dia de trabalho.
+                    </p>
+
+                    <div class="service-offer">
+                        <h3>💡 Precisa de um site como este para sua empresa ou outra área?</h3>
+                        <p>Desenvolvemos sites personalizados para profissionais da construção civil, lojas de materiais, escritórios de arquitetura e muito mais.</p>
+                        <a href="mailto:contato@badigital.com?subject=Quero%20um%20site%20como%20o%20da%20Construção%20Civil" class="btn-hire">
+                            📩 Entre em contato para contratar
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="caixa-dois">
-            <h1>SUGESTÃO</h1>
-            <P>Abaixo segue nosso coletor de novas ideias, gostamos de tratar a sua critica como ideia, isso nós ajuda a
-                crescer juntos.</P>
-            <input type="text" placeholder="Digite sua sugestão">
-            <button class="sugest-button">Enviar</button>
-        </div>
-    </section>
+        <!-- Seção de Sugestões -->
+        <section class="suggestion-section">
+            <div class="container">
+                <div class="suggestion-box">
+                    <h1>✨ SUGESTÃO</h1>
+                    <p>Abaixo segue nosso coletor de novas ideias. Gostamos de tratar sua crítica como ideia — isso nos ajuda a crescer juntos.</p>
+                    <form id="suggestionForm">
+                        <textarea 
+                            name="suggestion" 
+                            placeholder="Digite sua sugestão aqui (ex: adicionar mapa de profissionais, sistema de avaliações...)" 
+                            required
+                            maxlength="500"
+                        ></textarea>
+                        <button type="submit" class="btn-submit">📤 Enviar Sugestão</button>
+                    </form>
+                    <div id="formMessage" class="form-message"></div>
+                </div>
+            </div>
+        </section>
+    </main>
 
+    <footer>
+        <p>&copy; 2025 BAdigital — Desenvolvido para Profissionais da Construção Civil</p>
+    </footer>
+
+    <script>
+        document.getElementById('suggestionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const messageDiv = document.getElementById('formMessage');
+            const textarea = this.querySelector('textarea');
+            
+            if (textarea.value.trim().length < 10) {
+                messageDiv.textContent = "Por favor, escreva uma sugestão mais detalhada (mín. 10 caracteres).";
+                messageDiv.className = "form-message error";
+                return;
+            }
+
+            // Simulação de envio (em produção, envie via fetch() para um backend)
+            messageDiv.textContent = "✅ Sugestão enviada com sucesso! Obrigado pela contribuição.";
+            messageDiv.className = "form-message success";
+            textarea.value = "";
+            
+            // Limpa a mensagem após 5 segundos
+            setTimeout(() => {
+                messageDiv.textContent = "";
+                messageDiv.className = "form-message";
+            }, 5000);
+        });
+    </script>
 </body>
-
 </html>

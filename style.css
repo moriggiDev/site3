@@ -911,3 +911,260 @@ body {
         height: 250px;
     }
 }
+
+/* === PÁGINA: QUEM SOMOS === */
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Escurece o fundo para melhor leitura */
+    z-index: -1;
+}
+
+/* Header */
+header {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem 0;
+    position: relative;
+    z-index: 10;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+nav a:hover, nav a.active {
+    background: #e67e22;
+}
+
+/* Main Sections */
+main {
+    position: relative;
+    z-index: 1;
+}
+
+.about-section {
+    padding: 6rem 1rem 4rem;
+    color: white;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.service-offer {
+    background: rgba(255,255,255,0.1);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 3rem;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.service-offer h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #f1c40f;
+}
+
+.service-offer p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.btn-hire {
+    display: inline-block;
+    background: #e67e22;
+    color: white;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s;
+    font-size: 1.1rem;
+}
+
+.btn-hire:hover {
+    background: #d35400;
+    transform: scale(1.05);
+}
+
+/* Seção de Sugestões */
+.suggestion-section {
+    padding: 4rem 1rem;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    text-align: center;
+}
+
+.suggestion-box {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.08);
+    padding: 3rem;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.suggestion-box h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #f1c40f;
+}
+
+.suggestion-box p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.suggestion-box textarea {
+    width: 100%;
+    height: 120px;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid #555;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.suggestion-box textarea:focus {
+    outline: none;
+    border-color: #f39c12;
+    background: rgba(255,255,255,0.15);
+}
+
+.btn-submit {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.8rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background: #229954;
+    transform: translateY(-2px);
+}
+
+/* Mensagens de Feedback */
+.form-message {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    display: none;
+}
+
+.form-message.error {
+    background: #e74c3c;
+    color: white;
+    display: block;
+}
+
+.form-message.success {
+    background: #27ae60;
+    color: white;
+    display: block;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    margin-top: 3rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 4rem 1rem 3rem;
+    }
+
+    .about-content h2 {
+        font-size: 2rem;
+    }
+
+    .lead {
+        font-size: 1.1rem;
+    }
+
+    .suggestion-box {
+        padding: 2rem 1.5rem;
+    }
+
+    .suggestion-box h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn-submit, .btn-hire {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
